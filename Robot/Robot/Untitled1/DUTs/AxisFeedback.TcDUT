@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <DUT Name="AxisFeedback" Id="{e9686ea9-dc3e-4cef-abb3-de4ec4310fae}">
+    <Declaration><![CDATA[TYPE AxisFeedback :
+STRUCT
+	Status			: BOOL;
+	Busy			: BOOL;
+	Active			: BOOL;
+	Error			: BOOL;
+	ErrorID			: UDINT;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <POU Name="AxisControl" Id="{9f87289e-6749-4cbb-bb3a-569f3c84f8a5}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK AxisControl
+VAR_INPUT
+	Axis 			: AXIS_REF;
+	AxisInputs		: AxisInputs;
+END_VAR
+VAR_OUTPUT
+	Status			: AxisFeedback;
+END_VAR
+VAR
+	Power			: MC_Power;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[Power(Axis := Axis,
+	  Enable := AxisInputs.PowerEnable,
+	  Enable_Positive := AxisInputs.EnablePositive,
+	  Enable_Negative := AxisInputs.EnableNegative,
+	  Override := AxisInputs.Override,
+	  BufferMode := AxisInputs.BufferMode,
+	  Options := AxisInputs.Options,
+	  Status => Status.Status,
+	  Busy => Status.Busy,
+	  Active => Status.Active,
+	  Error => Status.Error,
+	  ErrorID => Status.ErrorID);
+	  
+]]></ST>
+    </Implementation>
+    <LineIds Name="AxisControl">
+      <LineId Id="9" Count="0" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="16" Count="11" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
