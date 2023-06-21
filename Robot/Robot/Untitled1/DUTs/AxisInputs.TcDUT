@@ -9,6 +9,9 @@ STRUCT
 	Override		: LREAL;
 	BufferMode		: MC_BufferMode;
 	Options			: ST_PowerOptions;
+	
+	ResetEnable		: BOOL;
+	StopExecute		: BOOL;
 END_STRUCT
 END_TYPE
 ]]></Declaration>

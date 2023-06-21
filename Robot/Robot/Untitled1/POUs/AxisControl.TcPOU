@@ -11,6 +11,8 @@ VAR_OUTPUT
 END_VAR
 VAR
 	Power			: MC_Power;
+	Reset			: MC_Reset;
+	Stop			: MC_Stop;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -26,13 +28,34 @@ END_VAR
 	  Active => Status.Active,
 	  Error => Status.Error,
 	  ErrorID => Status.ErrorID);
+
+Reset(Axis := Axis,
+	  Execute := AxisInputs.ResetEnable,
+	  Done => AxisFeedback.Done,
+      Busy => AxisFeedback.Busy,
+	  Error => AxisFeedback.Busy,
+	  ErrorID => AxisFeedback.ErrorID);
+
+
+	  
+	
+	  
 	  
 ]]></ST>
     </Implementation>
     <LineIds Name="AxisControl">
       <LineId Id="9" Count="0" />
       <LineId Id="14" Count="0" />
-      <LineId Id="16" Count="11" />
+      <LineId Id="16" Count="9" />
+      <LineId Id="44" Count="0" />
+      <LineId Id="39" Count="0" />
+      <LineId Id="45" Count="2" />
+      <LineId Id="51" Count="1" />
+      <LineId Id="58" Count="1" />
+      <LineId Id="54" Count="0" />
+      <LineId Id="41" Count="0" />
+      <LineId Id="40" Count="0" />
+      <LineId Id="26" Count="1" />
     </LineIds>
   </POU>
 </TcPlcObject>
