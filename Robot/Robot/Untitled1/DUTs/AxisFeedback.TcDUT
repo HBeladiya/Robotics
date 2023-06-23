@@ -7,9 +7,9 @@ STRUCT
 	Busy			: BOOL;
 	Active			: BOOL;
 	Error			: BOOL;
-	ErrorID			: UDINT;
-	
+	ErrorID			: UDINT;	
 	Done			: BOOL;
+	CommandAborted	: BOOL;
 END_STRUCT
 END_TYPE
 ]]></Declaration>

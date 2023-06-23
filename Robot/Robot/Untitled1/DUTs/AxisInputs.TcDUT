@@ -11,7 +11,46 @@ STRUCT
 	Options			: ST_PowerOptions;
 	
 	ResetEnable		: BOOL;
-	StopExecute		: BOOL;
+	
+	StopExecute			: BOOL;
+	StopDeceleration	: LREAL;
+	StopJerk			: LREAL;
+	StopOptions			: ST_MoveOptions;
+	
+	
+	JogForward		: BOOL;
+	JogBackward		: BOOL;
+	jogMode			: E_JogMode;
+	JogPosition		: LREAL;
+	JogVelocity		: LREAL;
+	JogAcceleration : LREAL;
+	JogDeceleration : LREAL;
+	JogJerk			: LREAL;
+	
+	HaltExecute			: BOOL;
+	HaltDeceleration	: LREAL;
+	HaltJerk			: LREAL;
+	HaltBufferMode		: MC_BufferMode;
+	HaltOptions			: ST_MoveOptions;
+	
+	MoveAbsoluteExecute				: BOOL;
+	MoveAbsolutePosition			: LREAL;
+	MoveAbsoluteVelocity			: LREAL;
+	MoveAbsoluteAcceleration		: LREAL;
+	MoveAbsoluteDeceleration		: LREAL;
+	MoveAbsoluteJerk				: LREAL;
+	MoveAbsoluteBufferMode			: MC_BufferMode;
+	MoveAbsoluteOptions				: ST_MoveOptions;
+	
+	MoveRelativeExecute				: BOOL;
+	MoveRelativeDistance			: LREAL;
+	MoveRelativeVelocity			: LREAL;
+	MoveRelativeAcceleration		: LREAL;
+	MoveRelativeDeceleration		: LREAL;
+	MoveRelativeJerk				: LREAL;
+	MoveRelativeBufferMode			: MC_BufferMode;
+	MoveRelativeOptions				: ST_MoveOptions;
+
 END_STRUCT
 END_TYPE
 ]]></Declaration>

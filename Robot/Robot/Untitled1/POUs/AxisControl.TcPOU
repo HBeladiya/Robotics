@@ -13,6 +13,10 @@ VAR
 	Power			: MC_Power;
 	Reset			: MC_Reset;
 	Stop			: MC_Stop;
+	Jog				: MC_Jog;
+	Halt			: MC_Halt;
+	MoveAbsolute	: MC_MoveAbsolute;
+	MoveRelative	: MC_MoveRelative;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -31,10 +35,81 @@ END_VAR
 
 Reset(Axis := Axis,
 	  Execute := AxisInputs.ResetEnable,
-	  Done => AxisFeedback.Done,
-      Busy => AxisFeedback.Busy,
-	  Error => AxisFeedback.Busy,
-	  ErrorID => AxisFeedback.ErrorID);
+	  Done => Status.Done,
+      Busy => Status.Busy,
+	  Error => Status.Busy,
+	  ErrorID => Status.ErrorID);
+	  
+Stop(Axis := Axis,
+	 Execute := AxisInputs.StopExecute,
+	 Deceleration := AxisInputs.StopDeceleration,
+	 Jerk := AxisInputs.StopJerk,
+	 Options := AxisInputs.StopOptions,
+	 Done => Status.Done,
+	 Busy => Status.Busy,
+	 Active => Status.Active,
+	 CommandAborted => Status.CommandAborted,
+	 Error => Status.Error,
+	 ErrorID => Status.ErrorID); 
+
+Halt(Axis := Axis,
+	 Execute := AxisInputs.HaltExecute,
+	 Deceleration := AxisInputs.HaltDeceleration,
+	 Jerk := AxisInputs.HaltJerk,
+	 BufferMode := AxisInputs.HaltBufferMode,
+	 Options := AxisInputs.HaltOptions,
+	 Done => Status.Done,
+	 Busy => Status.Busy,
+	 Active => Status.Active,
+	 CommandAborted => Status.CommandAborted,
+	 Error => Status.Error,
+	 ErrorID => Status.ErrorID); 
+
+Jog(Axis := Axis,
+	JogForward := AxisInputs.JogForward,
+	JogBackwards := AxisInputs.JogBackward,
+	Mode := AxisInputs.jogMode,
+	Position := AxisInputs.JogPosition,
+	Velocity := AxisInputs.JogVelocity,
+	Acceleration := AxisInputs.JogAcceleration,
+	Deceleration := AxisInputs.JogDeceleration,
+	jerk := AxisInputs.JogJerk,
+	Done => Status.Done,
+	Busy => Status.Busy,
+	Active => Status.Active,
+	CommandAborted => Status.CommandAborted,
+	Error => Status.Error,
+	ErrorID => Status.ErrorID);
+	
+MoveAbsolute(Axis := Axis,
+			 Execute := AxisInputs.MoveAbsoluteExecute,
+			 Position := AxisInputs.MoveAbsolutePosition,
+			 Acceleration := AxisInputs.MoveAbsoluteAcceleration,
+			 Deceleration := AxisInputs.MoveAbsoluteDeceleration,
+			 Jerk := AxisInputs.MoveAbsoluteJerk,
+			 Options := AxisInputs.MoveAbsoluteOptions
+			 BufferMode := AxisInputs.MoveAbsoluteBufferMode,
+			 Done => Status.Done,
+			 Busy => Status.Busy,
+			 Active => Status.Active,
+			 CommandAborted => Status.CommandAborted,
+			 Error => Status.Error,
+			 ErrorID => Status.ErrorID);
+				 
+MoveRelative(Axis := Axis,
+			 Execute := AxisInputs.MoveRelativeExecute,
+			 Distance := AxisInputs.MoveRelativeDistance,
+			 Acceleration := AxisInputs.MoveRelativeAcceleration,
+			 Deceleration := AxisInputs.MoveRelativeDeceleration,
+			 Jerk := AxisInputs.MoveRelativeJerk,
+			 Options := AxisInputs.MoveRelativeOptions
+			 BufferMode := AxisInputs.MoveRelativeBufferMode,
+			 Done => Status.Done,
+			 Busy => Status.Busy,
+			 Active => Status.Active,
+			 CommandAborted => Status.CommandAborted,
+			 Error => Status.Error,
+			 ErrorID => Status.ErrorID);
 
 
 	  
@@ -51,7 +126,30 @@ Reset(Axis := Axis,
       <LineId Id="39" Count="0" />
       <LineId Id="45" Count="2" />
       <LineId Id="51" Count="1" />
-      <LineId Id="58" Count="1" />
+      <LineId Id="92" Count="0" />
+      <LineId Id="94" Count="4" />
+      <LineId Id="100" Count="4" />
+      <LineId Id="99" Count="0" />
+      <LineId Id="109" Count="0" />
+      <LineId Id="111" Count="3" />
+      <LineId Id="121" Count="0" />
+      <LineId Id="115" Count="5" />
+      <LineId Id="110" Count="0" />
+      <LineId Id="73" Count="0" />
+      <LineId Id="58" Count="0" />
+      <LineId Id="76" Count="1" />
+      <LineId Id="80" Count="11" />
+      <LineId Id="107" Count="1" />
+      <LineId Id="126" Count="4" />
+      <LineId Id="141" Count="0" />
+      <LineId Id="132" Count="0" />
+      <LineId Id="135" Count="4" />
+      <LineId Id="134" Count="0" />
+      <LineId Id="133" Count="0" />
+      <LineId Id="142" Count="12" />
+      <LineId Id="105" Count="0" />
+      <LineId Id="78" Count="0" />
+      <LineId Id="59" Count="0" />
       <LineId Id="54" Count="0" />
       <LineId Id="41" Count="0" />
       <LineId Id="40" Count="0" />
