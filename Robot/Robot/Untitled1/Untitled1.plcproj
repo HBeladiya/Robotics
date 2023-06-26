@@ -23,6 +23,14 @@
     <Compile Include="DUTs\AxisInputs.TcDUT">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="GVLs\Feedback.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
+    <Compile Include="GVLs\Inputs.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
     <Compile Include="PlcTask.TcTTO">
       <SubType>Code</SubType>
     </Compile>

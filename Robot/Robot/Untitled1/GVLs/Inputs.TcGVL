@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <GVL Name="Inputs" Id="{c055cae3-14d0-40ee-9f1f-7b5ae4d4b8e4}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	AxisX_Inputs		: AxisInputs;
+	AxisY_Inputs		: AxisInputs;
+	AxisZ_Inputs		: AxisInputs;
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

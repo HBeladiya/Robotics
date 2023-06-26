@@ -33,6 +33,7 @@ END_VAR
 	  Error => Status.Error,
 	  ErrorID => Status.ErrorID);
 
+	 
 Reset(Axis := Axis,
 	  Execute := AxisInputs.ResetEnable,
 	  Done => Status.Done,
@@ -87,7 +88,7 @@ MoveAbsolute(Axis := Axis,
 			 Acceleration := AxisInputs.MoveAbsoluteAcceleration,
 			 Deceleration := AxisInputs.MoveAbsoluteDeceleration,
 			 Jerk := AxisInputs.MoveAbsoluteJerk,
-			 Options := AxisInputs.MoveAbsoluteOptions
+			 Options := AxisInputs.MoveAbsoluteOptions,
 			 BufferMode := AxisInputs.MoveAbsoluteBufferMode,
 			 Done => Status.Done,
 			 Busy => Status.Busy,
@@ -102,7 +103,7 @@ MoveRelative(Axis := Axis,
 			 Acceleration := AxisInputs.MoveRelativeAcceleration,
 			 Deceleration := AxisInputs.MoveRelativeDeceleration,
 			 Jerk := AxisInputs.MoveRelativeJerk,
-			 Options := AxisInputs.MoveRelativeOptions
+			 Options := AxisInputs.MoveRelativeOptions,
 			 BufferMode := AxisInputs.MoveRelativeBufferMode,
 			 Done => Status.Done,
 			 Busy => Status.Busy,
@@ -122,6 +123,7 @@ MoveRelative(Axis := Axis,
       <LineId Id="9" Count="0" />
       <LineId Id="14" Count="0" />
       <LineId Id="16" Count="9" />
+      <LineId Id="172" Count="0" />
       <LineId Id="44" Count="0" />
       <LineId Id="39" Count="0" />
       <LineId Id="45" Count="2" />

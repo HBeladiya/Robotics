@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <GVL Name="Feedback" Id="{0fea718b-4e5e-4198-8b41-16d0c7c7591b}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	AxisX_Feedback		: AxisFeedback;
+	AxisY_Feedback		: AxisFeedback;
+	AxisZ_Feedback		: AxisFeedback;
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>
