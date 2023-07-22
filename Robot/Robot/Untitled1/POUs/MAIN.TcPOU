@@ -6,47 +6,12 @@ VAR
 	X_Axis			: AXIS_REF;
 	Y_Axis			: AXIS_REF;
 	Z_Axis			: AXIS_REF;
-	
-	AxisX			: AxisControl;
-	AxisY			: AxisControl;
-	AxisZ			: AxisControl;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[AxisX(Axis := X_Axis,
-	  AxisInputs := Inputs.AxisX_Inputs,
-	  Status => Feedback.AxisX_Feedback);
-	  
-AxisX(Axis := Y_Axis,
-	  AxisInputs := Inputs.AxisY_Inputs,
-	  Status => Feedback.AxisY_Feedback);
-	  
-	  
-	  
-// Enabling the axis x and y
-Inputs.AxisX_Inputs.PowerEnable := TRUE;
-Inputs.AxisX_Inputs.EnableNegative := TRUE;
-Inputs.AxisX_Inputs.EnablePositive := TRUE;
-Inputs.AxisX_Inputs.Override := 100;
-
-
-Inputs.AxisY_Inputs.PowerEnable := TRUE;
-Inputs.AxisY_Inputs.EnableNegative := TRUE;
-Inputs.AxisY_Inputs.EnablePositive := TRUE;
-Inputs.AxisY_Inputs.Override := 100;
-]]></ST>
+      <ST><![CDATA[]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
-      <LineId Id="2" Count="0" />
-      <LineId Id="14" Count="2" />
-      <LineId Id="18" Count="1" />
-      <LineId Id="17" Count="0" />
-      <LineId Id="20" Count="0" />
-      <LineId Id="26" Count="0" />
-      <LineId Id="28" Count="2" />
-      <LineId Id="32" Count="0" />
-      <LineId Id="34" Count="1" />
-      <LineId Id="37" Count="5" />
       <LineId Id="36" Count="0" />
     </LineIds>
   </POU>
