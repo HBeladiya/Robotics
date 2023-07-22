@@ -3,11 +3,6 @@
   <POU Name="MAIN" Id="{0ed01888-47ce-42c9-9b1b-67fc9476a6f3}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
-	X_Axis			: AXIS_REF;
-	Y_Axis			: AXIS_REF;
-	Z_Axis			: AXIS_REF;
-	
-	//////////////////////////////////////////////////////////////////
 	bUserEnableAxes			:	BOOL	:= TRUE;
 	fUserOverride			:	LREAL	:= 100.0;
 	
