@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <GVL Name="NCI" Id="{03107293-aeaa-4289-90fb-112fc146a3ea}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	bMFunc					: ARRAY[0..cnMaxMFuncNumber] OF BOOL;
+	bQuitMFunc				: ARRAY[0..cnMaxMFuncNumber] OF BOOL;
+	bFastMFunc				: ARRAY[0..cnMaxMFuncNumber] OF BOOL;
+END_VAR
+VAR_GLOBAL CONSTANT
+	cnMaxMFuncNumber		: INT	:= 159;
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

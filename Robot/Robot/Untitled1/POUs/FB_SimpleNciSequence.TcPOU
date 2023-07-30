@@ -34,9 +34,9 @@ VAR
 	bConfirmHsk			: BOOL	:= FALSE;
 	
 //	sPrgName			: STRING(255) := 'GST_SampleFunctions.nc'; //'first.nc';
-//	sPrgName			: STRING(255) := 'first.nc'; //'';
+	sPrgName			: STRING(255) := 'first.nc'; //'';
 //	sPrgName			: STRING(255) := 'sample.nc'; //'';
-	sPrgName			: STRING(255) := 'functionsExample.nc'; //'';
+//	sPrgName			: STRING(255) := 'functionsExample.nc'; //'';
 	
 	
 END_VAR

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <POU Name="PRG_MFuncControl" Id="{19677d06-9e27-4323-bf51-bb01aefc8330}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PRG_MFuncControl
+VAR
+	bActivateTool		: BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF NCI.bMFunc[5] THEN
+	bActivateTool			:= TRUE;
+	NCI.bQuitMFunc[11]		:= TRUE;
+END_IF
+
+
+IF NCI.bMFunc[12] THEN
+	bActivateTool			:= FALSE;
+	NCI.bQuitMFunc[12]		:= TRUE;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="PRG_MFuncControl">
+      <LineId Id="21" Count="8" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
