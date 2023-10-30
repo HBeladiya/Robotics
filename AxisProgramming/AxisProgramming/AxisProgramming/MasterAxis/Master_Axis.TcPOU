@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <POU Name="Master_Axis" Id="{667298e9-046b-4530-8e8f-220db46feb15}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK Master_Axis
+VAR_INPUT
+	Linked_Axis		: REF_AXIS;
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Property Name="Axis_State" Id="{10fedc61-71d5-4610-bd9d-cec5bc6b893c}">
+      <Declaration><![CDATA[PROPERTY Axis_State : BOOL]]></Declaration>
+      <Get Name="Get" Id="{74911ec7-62b5-4dfd-8145-d7de79290190}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{8e6d4562-4d71-4a04-89bc-786582cc1f66}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
+    <Method Name="Enable" Id="{d3be3a2f-5cc4-4162-bfd3-aadcfa398ae1}">
+      <Declaration><![CDATA[METHOD Enable
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Hault" Id="{bd6648fb-657d-4fdd-8fd7-45d948503f9c}">
+      <Declaration><![CDATA[METHOD Hault
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Home" Id="{4ab2e657-9053-4beb-a8ce-2a2b81376182}">
+      <Declaration><![CDATA[METHOD Home
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="MoveAbsolute" Id="{0ea4a38c-35e8-4c49-8844-b70ba6545c2f}">
+      <Declaration><![CDATA[METHOD MoveAbsolute 
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="MoveRelative" Id="{a0368554-fdfb-46af-b2a7-920c35c033a5}">
+      <Declaration><![CDATA[METHOD MoveRelative : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Stop" Id="{f38da706-b646-4e55-8636-403202df1783}">
+      <Declaration><![CDATA[METHOD Stop
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="Master_Axis">
+      <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="Master_Axis.Axis_State.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="Master_Axis.Axis_State.Set">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="Master_Axis.Enable">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="Master_Axis.Hault">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="Master_Axis.Home">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="Master_Axis.MoveAbsolute">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="Master_Axis.MoveRelative">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="Master_Axis.Stop">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
