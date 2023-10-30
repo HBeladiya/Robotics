@@ -8,7 +8,9 @@ END_VAR
 VAR_OUTPUT
 END_VAR
 VAR
+	State		:	INT;
 END_VAR
+
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[]]></ST>
