@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <GVL Name="Digital_Inputs" Id="{e0648d8d-87d3-4e5b-a806-9e6c08b61d79}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	Axis1_Sensor1			: BOOL;
+	Axis1_Sensor2			: BOOL;
+	Axis2_Sensor1			: BOOL;
+	Axis2_Sensor2			: BOOL;
+	Axis3_Sensor1			: BOOL;
+	Axis3_Sensor2			: BOOL;
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>
