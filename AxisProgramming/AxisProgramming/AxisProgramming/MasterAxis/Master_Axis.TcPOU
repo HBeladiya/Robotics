@@ -27,6 +27,10 @@ VAR
 	HaultTrigger	: R_Trig;
 	Home_Execute	: BOOL;
 	HomeTrigger		: R_Trig;
+	MoveAbsolute_Execute	: BOOL;
+	MoveAbsoluteTrigger		: R_Trig;
+	MoveRelative_Execute	: BOOL;
+	MoveRelativeTrigger		: R_Trig;
 	
 	
 	//Structure that hold variables which are connected wirh the output side of the MC FBs
@@ -81,7 +85,57 @@ Home(Axis := Linked_Axis,
 	 CommandAborted => Status.Home.CommandAborted,
 	 Error => Status.Home.Error,
 	 ErrorID => Status.Home.ErrorID);
+	 
+MoveAbsoluteTrigger(CLK:= MoveAbsolute_Execute);
+MoveAbsolute(Axis := Linked_Axis,
+			 Execute := MoveAbsoluteTrigger.Q,
+			 Position := ,
+			 Velocity := ,
+			 Acceleration := ,
+			 Deceleration := ,
+			 Jerk := ,
+			 BufferMode := ,
+			 Options := ,
+			 Done => Status.MoveAbsolute.Done,
+			 Busy => Status.MoveAbsolute.Busy,
+			 Active => Status.MoveAbsolute.Active,
+			 CommandAborted => Status.MoveAbsolute.CommandAborted,
+			 Error => Status.MoveAbsolute.Error,
+			 ErrorID => Status.MoveAbsolute.ErrorID);
+			 
+MoveRelativeTrigger(CLK := MoveRelative_Execute);
+MoveRelative(Axis := Linked_Axis,
+			 Execute := MoveRelativeTrigger.Q,
+			 Velocity := ,
+			 Acceleration := ,
+			 Deceleration := ,
+			 Jerk := ,
+		     BufferMode := ,
+			 Options := ,
+			 Done => Status.MoveRelative.Done,
+			 Busy => Status.MoveRelative.Busy,
+			 Active => Status.MoveRelative.Active,
+			 CommandAborted => Status.MoveRelative.CommandAborted,
+			 Error => Status.MoveRelative.Error,
+			 ErrorID => Status.MoveRelative.ErrorID);			 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
 ]]></ST>
     </Implementation>
     <Property Name="Axis_State" Id="{10fedc61-71d5-4610-bd9d-cec5bc6b893c}">
@@ -171,7 +225,17 @@ END_VAR
       <LineId Id="137" Count="1" />
       <LineId Id="21" Count="0" />
       <LineId Id="123" Count="11" />
+      <LineId Id="158" Count="0" />
+      <LineId Id="139" Count="0" />
       <LineId Id="86" Count="0" />
+      <LineId Id="141" Count="13" />
+      <LineId Id="194" Count="0" />
+      <LineId Id="159" Count="0" />
+      <LineId Id="140" Count="0" />
+      <LineId Id="160" Count="8" />
+      <LineId Id="187" Count="3" />
+      <LineId Id="170" Count="16" />
+      <LineId Id="169" Count="0" />
       <LineId Id="9" Count="0" />
     </LineIds>
     <LineIds Name="Master_Axis.Axis_State.Get">
