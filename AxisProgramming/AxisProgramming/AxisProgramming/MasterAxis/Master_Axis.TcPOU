@@ -25,6 +25,8 @@ VAR
 	
 	Hault_Execute	: BOOL;
 	HaultTrigger	: R_Trig;
+	Home_Execute	: BOOL;
+	HomeTrigger		: R_Trig;
 	
 	
 	//Structure that hold variables which are connected wirh the output side of the MC FBs
@@ -51,9 +53,9 @@ END_VAR
 	   Error => Status.Power.Error,
 	   ErrorID => Status.Power.ErrorID);
 	   
-HaultTrigger(CLK := Hault_Execute);
-	   
-Hault(Execute := HaultTrigger.Q,
+HaultTrigger(CLK := Hault_Execute);   
+Hault(Axis := Linked_Axis,
+	  Execute := HaultTrigger.Q,
 	  Deceleration := ,
 	  Jerk := ,
 	  BufferMode := ,
@@ -65,7 +67,20 @@ Hault(Execute := HaultTrigger.Q,
 	  Error => Status.Hault.Error,
 	  ErrorID => Status.Hault.ErrorID);
 	  
-	
+HomeTrigger(CLK := Home_Execute);
+Home(Axis := Linked_Axis,
+	 Execute := HomeTrigger.Q,
+	 Position := ,
+	 HomingMode := ,
+	 BufferMode := ,
+	 Options := ,
+	 bCalibrationCam := ,
+	 Done => Status.Home.Done,
+	 Busy => Status.Home.Busy,
+	 Active => Status.Home.Active,
+	 CommandAborted => Status.Home.CommandAborted,
+	 Error => Status.Home.Error,
+	 ErrorID => Status.Home.ErrorID);
 
 ]]></ST>
     </Implementation>
@@ -149,12 +164,13 @@ END_VAR
       <LineId Id="53" Count="3" />
       <LineId Id="85" Count="0" />
       <LineId Id="84" Count="0" />
-      <LineId Id="66" Count="0" />
       <LineId Id="65" Count="0" />
+      <LineId Id="122" Count="0" />
       <LineId Id="67" Count="1" />
       <LineId Id="71" Count="7" />
-      <LineId Id="69" Count="0" />
+      <LineId Id="137" Count="1" />
       <LineId Id="21" Count="0" />
+      <LineId Id="123" Count="11" />
       <LineId Id="86" Count="0" />
       <LineId Id="9" Count="0" />
     </LineIds>

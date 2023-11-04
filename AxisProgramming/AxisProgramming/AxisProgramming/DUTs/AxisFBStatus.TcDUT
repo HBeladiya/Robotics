@@ -5,6 +5,7 @@
 STRUCT
 	Power			: MC_Power_Status;
 	Hault			: MC_Halt_Status;
+	Home			: MC_Halt_Status;
 END_STRUCT
 END_TYPE
 ]]></Declaration>
