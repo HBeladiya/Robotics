@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <DUT Name="MC_Halt_Status" Id="{0dadedbd-f3e8-447e-93cd-122acba99855}">
+    <Declaration><![CDATA[TYPE MC_Halt_Status :
+STRUCT
+	Done           : BOOL;
+    Busy           : BOOL;
+    Active         : BOOL;
+    CommandAborted : BOOL;
+    Error          : BOOL;
+    ErrorID        : UDINT;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

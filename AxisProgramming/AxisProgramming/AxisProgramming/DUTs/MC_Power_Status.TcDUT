@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <DUT Name="MC_Power_Status" Id="{12e523c7-154d-498d-a9ac-fca18222198d}">
+    <Declaration><![CDATA[TYPE MC_Power_Status :
+STRUCT
+	Status		: BOOL;
+	Busy		: BOOL;
+	Active		: BOOL;
+	Error		: BOOL;
+	ErrorID		: UDINT;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

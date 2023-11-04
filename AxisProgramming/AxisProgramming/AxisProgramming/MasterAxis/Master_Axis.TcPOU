@@ -8,12 +8,66 @@ END_VAR
 VAR_OUTPUT
 END_VAR
 VAR
-	State		:	INT;
+	// Motion Control Function Blocks
+	Enable			: MC_POWER;
+	Hault			: MC_HALT;
+	Home			: MC_HOME;
+	MoveAbsolute	: MC_MOVEABSOLUTE;
+	MoveRelative	: MC_MOVERELATIVE;
+	Stop			: MC_STOP;
+	
+	// Variables to operate functions of the axis
+	PowerUp			: BOOL;
+	Enable_Positive	: BOOL;
+	Enable_Negative : BOOL;
+	PowerOverride	: INT;
+	PowerDown		: BOOL;
+	
+	Hault_Execute	: BOOL;
+	HaultTrigger	: R_Trig;
+	
+	
+	//Structure that hold variables which are connected wirh the output side of the MC FBs
+	Status 			: AxisFBStatus;
+	
+	// State Machine Variable for axis
+	State			:	INT;
 END_VAR
+VAR CONSTANT
 
+END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[Enable(Axis := Linked_Axis,
+	   Enable:= Powerup,
+	   Enable_Positive := Enable_Positive,
+	   Enable_Negative := Enable_Negative,
+	   Override := PowerOverride ,
+	   BufferMode := ,
+	   Options := ,
+	   Status => Status.Power.Status,
+	   Busy => Status.Power.Busy,
+	   Active => Status.Power.Active,
+	   Error => Status.Power.Error,
+	   ErrorID => Status.Power.ErrorID);
+	   
+HaultTrigger(CLK := Hault_Execute);
+	   
+Hault(Execute := HaultTrigger.Q,
+	  Deceleration := ,
+	  Jerk := ,
+	  BufferMode := ,
+	  Options := ,
+	  Done => Status.Hault.Done ,
+	  Busy => Status.Hault.Busy ,
+	  Active => Status.Hault.Active,
+	  CommandAborted => Status.Hault.CommandAborted,
+	  Error => Status.Hault.Error,
+	  ErrorID => Status.Hault.ErrorID);
+	  
+	
+
+]]></ST>
     </Implementation>
     <Property Name="Axis_State" Id="{10fedc61-71d5-4610-bd9d-cec5bc6b893c}">
       <Declaration><![CDATA[PROPERTY Axis_State : BOOL]]></Declaration>
@@ -89,6 +143,19 @@ END_VAR
       </Implementation>
     </Method>
     <LineIds Name="Master_Axis">
+      <LineId Id="20" Count="0" />
+      <LineId Id="39" Count="0" />
+      <LineId Id="46" Count="5" />
+      <LineId Id="53" Count="3" />
+      <LineId Id="85" Count="0" />
+      <LineId Id="84" Count="0" />
+      <LineId Id="66" Count="0" />
+      <LineId Id="65" Count="0" />
+      <LineId Id="67" Count="1" />
+      <LineId Id="71" Count="7" />
+      <LineId Id="69" Count="0" />
+      <LineId Id="21" Count="0" />
+      <LineId Id="86" Count="0" />
       <LineId Id="9" Count="0" />
     </LineIds>
     <LineIds Name="Master_Axis.Axis_State.Get">

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <DUT Name="AxisFBStatus" Id="{5a0f42d6-d461-49f3-becc-2e81c59d502a}">
+    <Declaration><![CDATA[TYPE AxisFBStatus :
+STRUCT
+	Power			: MC_Power_Status;
+	Hault			: MC_Halt_Status;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>
