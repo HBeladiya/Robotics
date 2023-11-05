@@ -3,15 +3,15 @@
   <POU Name="Master_Axis" Id="{667298e9-046b-4530-8e8f-220db46feb15}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK Master_Axis
 VAR_INPUT
-	Linked_Axis		: REF_AXIS;
+	Linked_Axis		: AXIS_REF;
 END_VAR
 VAR_OUTPUT
 END_VAR
 VAR
 	// Motion Control Function Blocks
-	Enable			: MC_POWER;
+	Power			: MC_POWER;
 	Hault			: MC_HALT;
-	Home			: MC_HOME;
+	Reference_Drive			: MC_HOME;
 	MoveAbsolute	: MC_MOVEABSOLUTE;
 	MoveRelative	: MC_MOVERELATIVE;
 	Stop			: MC_STOP;
@@ -44,7 +44,7 @@ VAR CONSTANT
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[Enable(Axis := Linked_Axis,
+      <ST><![CDATA[Power(Axis := Linked_Axis,
 	   Enable:= Powerup,
 	   Enable_Positive := Enable_Positive,
 	   Enable_Negative := Enable_Negative,
@@ -72,7 +72,7 @@ Hault(Axis := Linked_Axis,
 	  ErrorID => Status.Hault.ErrorID);
 	  
 HomeTrigger(CLK := Home_Execute);
-Home(Axis := Linked_Axis,
+Reference_Drive(Axis := Linked_Axis,
 	 Execute := HomeTrigger.Q,
 	 Position := ,
 	 HomingMode := ,
@@ -158,12 +158,19 @@ END_VAR
       </Set>
     </Property>
     <Method Name="Enable" Id="{d3be3a2f-5cc4-4162-bfd3-aadcfa398ae1}">
-      <Declaration><![CDATA[METHOD Enable
+      <Declaration><![CDATA[METHOD Enable : BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[PowerOverride := 100;
+PowerUp := TRUE;
+Enable_Positive := TRUE;
+Enable_Negative := TRUE;
+
+IF Status.Power.Status THEN
+	Enable := TRUE;
+END_IF]]></ST>
       </Implementation>
     </Method>
     <Method Name="Hault" Id="{bd6648fb-657d-4fdd-8fd7-45d948503f9c}">
@@ -176,12 +183,17 @@ END_VAR
       </Implementation>
     </Method>
     <Method Name="Home" Id="{4ab2e657-9053-4beb-a8ce-2a2b81376182}">
-      <Declaration><![CDATA[METHOD Home
+      <Declaration><![CDATA[METHOD Home : BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[Home_Execute := TRUE;
+
+IF Status.Home.Done THEN
+	Home_Execute := TRUE;
+	Home := True;
+END_IF]]></ST>
       </Implementation>
     </Method>
     <Method Name="MoveAbsolute" Id="{0ea4a38c-35e8-4c49-8844-b70ba6545c2f}">
@@ -212,30 +224,7 @@ END_VAR
       </Implementation>
     </Method>
     <LineIds Name="Master_Axis">
-      <LineId Id="20" Count="0" />
-      <LineId Id="39" Count="0" />
-      <LineId Id="46" Count="5" />
-      <LineId Id="53" Count="3" />
-      <LineId Id="85" Count="0" />
-      <LineId Id="84" Count="0" />
-      <LineId Id="65" Count="0" />
-      <LineId Id="122" Count="0" />
-      <LineId Id="67" Count="1" />
-      <LineId Id="71" Count="7" />
-      <LineId Id="137" Count="1" />
-      <LineId Id="21" Count="0" />
-      <LineId Id="123" Count="11" />
-      <LineId Id="158" Count="0" />
-      <LineId Id="139" Count="0" />
-      <LineId Id="86" Count="0" />
-      <LineId Id="141" Count="13" />
-      <LineId Id="194" Count="0" />
-      <LineId Id="159" Count="0" />
-      <LineId Id="140" Count="0" />
-      <LineId Id="160" Count="8" />
-      <LineId Id="187" Count="3" />
-      <LineId Id="170" Count="16" />
-      <LineId Id="169" Count="0" />
+      <LineId Id="410" Count="91" />
       <LineId Id="9" Count="0" />
     </LineIds>
     <LineIds Name="Master_Axis.Axis_State.Get">
@@ -245,13 +234,20 @@ END_VAR
       <LineId Id="2" Count="0" />
     </LineIds>
     <LineIds Name="Master_Axis.Enable">
+      <LineId Id="13" Count="0" />
       <LineId Id="5" Count="0" />
+      <LineId Id="9" Count="1" />
+      <LineId Id="12" Count="0" />
+      <LineId Id="11" Count="0" />
+      <LineId Id="16" Count="0" />
+      <LineId Id="15" Count="0" />
     </LineIds>
     <LineIds Name="Master_Axis.Hault">
       <LineId Id="5" Count="0" />
     </LineIds>
     <LineIds Name="Master_Axis.Home">
-      <LineId Id="5" Count="0" />
+      <LineId Id="25" Count="4" />
+      <LineId Id="12" Count="0" />
     </LineIds>
     <LineIds Name="Master_Axis.MoveAbsolute">
       <LineId Id="5" Count="0" />

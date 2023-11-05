@@ -1,13 +1,47 @@
-<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1">
-  <POU Name="MAIN" Id="{6160b492-81c1-4c2c-860a-e8e871705101}">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.10">
+  <POU Name="MAIN" Id="{6160b492-81c1-4c2c-860a-e8e871705101}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
+	AXIS_X		: Master_Axis;
+	Axis_is_enabled	: BOOL;
+	Ref	: BOOL;
+	Axis_is_at_Home : BOOL;
 END_VAR
-]]>
-    </Declaration>
+]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[AXIS_X (Linked_Axis := AXIS_Declaration.Axis_X);
+
+AXIS_X.Enable();
+
+IF AXIS_X.Enable() THEN
+	Axis_is_enabled := TRUE;
+END_IF
+
+
+//IF Ref THEN
+// 	AXIS_X.Home();
+
+//	IF AXIS_X.Home() THEN
+//	Axis_is_at_Home := TRUE;	
+//	END_IF
+	
+//END_IF
+]]></ST>
     </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="2" Count="0" />
+      <LineId Id="8" Count="0" />
+      <LineId Id="7" Count="0" />
+      <LineId Id="10" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="13" Count="1" />
+      <LineId Id="27" Count="1" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="32" Count="3" />
+      <LineId Id="31" Count="0" />
+      <LineId Id="29" Count="1" />
+      <LineId Id="22" Count="0" />
+    </LineIds>
   </POU>
 </TcPlcObject>
