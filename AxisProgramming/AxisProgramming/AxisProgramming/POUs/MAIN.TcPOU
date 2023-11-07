@@ -10,7 +10,7 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[AXIS_X (Linked_Axis := AXIS_Declaration.Axis_X);
+      <ST><![CDATA[AXIS_X ();
 
 AXIS_X.Enable();
 

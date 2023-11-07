@@ -3,11 +3,12 @@
   <POU Name="Master_Axis" Id="{667298e9-046b-4530-8e8f-220db46feb15}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK Master_Axis
 VAR_INPUT
-	Linked_Axis		: AXIS_REF;
+	(*Linked_Axis		: AXIS_REF;*)
 END_VAR
 VAR_OUTPUT
 END_VAR
 VAR
+	Linked_Axis		: AXIS_REF;
 	// Motion Control Function Blocks
 	Power			: MC_POWER;
 	Hault			: MC_HALT;
