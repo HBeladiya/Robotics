@@ -10,12 +10,12 @@ END_VAR
 VAR
 	Linked_Axis		: AXIS_REF;
 	// Motion Control Function Blocks
-	Power			: MC_POWER;
-	Hault			: MC_HALT;
-	Reference_Drive			: MC_HOME;
-	MoveAbsolute	: MC_MOVEABSOLUTE;
-	MoveRelative	: MC_MOVERELATIVE;
-	Stop			: MC_STOP;
+	Power				: MC_POWER;
+	Pause				: MC_HALT;
+	Reference_Drive		: MC_HOME;
+	AbsoluteMotion		: MC_MOVEABSOLUTE;
+	RelativeMotion		: MC_MOVERELATIVE;
+	EmergencyStop		: MC_STOP;
 	
 	// Variables to operate functions of the axis
 	PowerUp			: BOOL;
@@ -28,8 +28,12 @@ VAR
 	HaultTrigger	: R_Trig;
 	Home_Execute	: BOOL;
 	HomeTrigger		: R_Trig;
+	
+	//MoveAbsolute Variables
 	MoveAbsolute_Execute	: BOOL;
 	MoveAbsoluteTrigger		: R_Trig;
+	
+	//MoveRelative Variabled
 	MoveRelative_Execute	: BOOL;
 	MoveRelativeTrigger		: R_Trig;
 	
@@ -59,7 +63,7 @@ END_VAR
 	   ErrorID => Status.Power.ErrorID);
 	   
 HaultTrigger(CLK := Hault_Execute);   
-Hault(Axis := Linked_Axis,
+Pause(Axis := Linked_Axis,
 	  Execute := HaultTrigger.Q,
 	  Deceleration := ,
 	  Jerk := ,
@@ -88,7 +92,7 @@ Reference_Drive(Axis := Linked_Axis,
 	 ErrorID => Status.Home.ErrorID);
 	 
 MoveAbsoluteTrigger(CLK:= MoveAbsolute_Execute);
-MoveAbsolute(Axis := Linked_Axis,
+AbsoluteMotion(Axis := Linked_Axis,
 			 Execute := MoveAbsoluteTrigger.Q,
 			 Position := ,
 			 Velocity := ,
@@ -105,7 +109,7 @@ MoveAbsolute(Axis := Linked_Axis,
 			 ErrorID => Status.MoveAbsolute.ErrorID);
 			 
 MoveRelativeTrigger(CLK := MoveRelative_Execute);
-MoveRelative(Axis := Linked_Axis,
+RelativeMotion(Axis := Linked_Axis,
 			 Execute := MoveRelativeTrigger.Q,
 			 Velocity := ,
 			 Acceleration := ,
@@ -225,7 +229,7 @@ END_VAR
       </Implementation>
     </Method>
     <LineIds Name="Master_Axis">
-      <LineId Id="410" Count="91" />
+      <LineId Id="854" Count="91" />
       <LineId Id="9" Count="0" />
     </LineIds>
     <LineIds Name="Master_Axis.Axis_State.Get">

@@ -3,10 +3,15 @@
   <POU Name="MAIN" Id="{6160b492-81c1-4c2c-860a-e8e871705101}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
+	// Variables to call the axis
 	AXIS_X		: Master_Axis;
 	Axis_is_enabled	: BOOL;
+	
+	//Variables for axis Home
 	Ref	: BOOL;
 	Axis_is_at_Home : BOOL;
+	
+	
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -17,6 +22,7 @@ AXIS_X.Enable();
 IF AXIS_X.Enable() THEN
 	Axis_is_enabled := TRUE;
 END_IF
+
 
 
 //IF Ref THEN
@@ -36,6 +42,7 @@ END_IF
       <LineId Id="10" Count="0" />
       <LineId Id="9" Count="0" />
       <LineId Id="13" Count="1" />
+      <LineId Id="53" Count="0" />
       <LineId Id="27" Count="1" />
       <LineId Id="18" Count="0" />
       <LineId Id="32" Count="3" />
