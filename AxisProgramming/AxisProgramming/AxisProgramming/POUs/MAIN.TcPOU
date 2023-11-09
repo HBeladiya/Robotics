@@ -11,6 +11,13 @@ VAR
 	Ref	: BOOL;
 	Axis_is_at_Home : BOOL;
 	
+	//Variables of move absolute functions
+	MoveAbsoluteDone : BOOL;
+	StartMoveAbsolute : BOOL;
+	
+	//Variables of move relative functions
+	MoveRelativeDone : BOOL;
+	StartMoveRelative : BOOL;
 	
 END_VAR
 ]]></Declaration>
@@ -24,15 +31,36 @@ IF AXIS_X.Enable() THEN
 END_IF
 
 
+//Logic for referencing
+IF Ref THEN
+ 	AXIS_X.Home();
 
-//IF Ref THEN
-// 	AXIS_X.Home();
-
-//	IF AXIS_X.Home() THEN
-//	Axis_is_at_Home := TRUE;	
-//	END_IF
+	IF AXIS_X.Home() THEN
+	Axis_is_at_Home := TRUE;	
+	END_IF
 	
-//END_IF
+END_IF
+
+//Logic for move absolute
+IF StartMoveAbsolute THEN
+	AXIS_X.MoveAbsolute();
+	
+	IF AXIS_X.MoveAbsolute() THEN
+		MoveAbsoluteDone := TRUE;
+		StartMoveAbsolute := FALSE;
+	END_IF
+END_IF
+
+// Logic for move relative
+IF StartMoveRelative THEN
+	AXIS_X.MoveRelative();
+	
+	IF AXIS_X.MoveRelative() THEN
+		MoveRelativeDone := TRUE;
+		StartMoveRelative := FALSE;
+	END_IF
+END_IF
+
 ]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
@@ -48,6 +76,19 @@ END_IF
       <LineId Id="32" Count="3" />
       <LineId Id="31" Count="0" />
       <LineId Id="29" Count="1" />
+      <LineId Id="90" Count="0" />
+      <LineId Id="66" Count="0" />
+      <LineId Id="78" Count="0" />
+      <LineId Id="80" Count="0" />
+      <LineId Id="82" Count="2" />
+      <LineId Id="87" Count="0" />
+      <LineId Id="85" Count="0" />
+      <LineId Id="81" Count="0" />
+      <LineId Id="89" Count="0" />
+      <LineId Id="88" Count="0" />
+      <LineId Id="92" Count="6" />
+      <LineId Id="91" Count="0" />
+      <LineId Id="79" Count="0" />
       <LineId Id="22" Count="0" />
     </LineIds>
   </POU>

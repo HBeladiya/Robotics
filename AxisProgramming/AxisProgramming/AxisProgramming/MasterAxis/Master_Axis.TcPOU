@@ -26,6 +26,8 @@ VAR
 	
 	Hault_Execute	: BOOL;
 	HaultTrigger	: R_Trig;
+	
+	
 	Home_Execute	: BOOL;
 	HomeTrigger		: R_Trig;
 	
@@ -79,8 +81,8 @@ Pause(Axis := Linked_Axis,
 HomeTrigger(CLK := Home_Execute);
 Reference_Drive(Axis := Linked_Axis,
 	 Execute := HomeTrigger.Q,
-	 Position := ,
-	 HomingMode := ,
+	 Position := 0,
+	 HomingMode := MC_Direct,
 	 BufferMode := ,
 	 Options := ,
 	 bCalibrationCam := ,
@@ -93,12 +95,12 @@ Reference_Drive(Axis := Linked_Axis,
 	 
 MoveAbsoluteTrigger(CLK:= MoveAbsolute_Execute);
 AbsoluteMotion(Axis := Linked_Axis,
-			 Execute := MoveAbsoluteTrigger.Q,
-			 Position := ,
-			 Velocity := ,
-			 Acceleration := ,
-			 Deceleration := ,
-			 Jerk := ,
+			 Execute := (*MoveAbsoluteTrigger.Q*)MoveAbsolute_Execute,
+			 Position := 1000,
+			 Velocity := 20,
+			 Acceleration := 5,
+			 Deceleration := 5,
+			 Jerk := 5,
 			 BufferMode := ,
 			 Options := ,
 			 Done => Status.MoveAbsolute.Done,
@@ -111,10 +113,11 @@ AbsoluteMotion(Axis := Linked_Axis,
 MoveRelativeTrigger(CLK := MoveRelative_Execute);
 RelativeMotion(Axis := Linked_Axis,
 			 Execute := MoveRelativeTrigger.Q,
-			 Velocity := ,
-			 Acceleration := ,
-			 Deceleration := ,
-			 Jerk := ,
+			 Distance := 500,
+			 Velocity := 10,
+			 Acceleration := 1,
+			 Deceleration := 1,
+			 Jerk := 1,
 		     BufferMode := ,
 			 Options := ,
 			 Done => Status.MoveRelative.Done,
@@ -202,12 +205,17 @@ END_IF]]></ST>
       </Implementation>
     </Method>
     <Method Name="MoveAbsolute" Id="{0ea4a38c-35e8-4c49-8844-b70ba6545c2f}">
-      <Declaration><![CDATA[METHOD MoveAbsolute 
+      <Declaration><![CDATA[METHOD MoveAbsolute : BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[MoveAbsolute_Execute := TRUE;
+
+IF Status.MoveAbsolute.Done THEN
+	MoveAbsolute_Execute := FALSE;
+	MoveAbsolute := TRUE;
+END_IF]]></ST>
       </Implementation>
     </Method>
     <Method Name="MoveRelative" Id="{a0368554-fdfb-46af-b2a7-920c35c033a5}">
@@ -216,7 +224,12 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[MoveRelative_Execute := TRUE;
+
+IF Status.MoveRelative.Done THEN
+	MoveRelative_Execute := FALSE;
+	MoveRelative := TRUE;
+END_IF]]></ST>
       </Implementation>
     </Method>
     <Method Name="Stop" Id="{f38da706-b646-4e55-8636-403202df1783}">
@@ -229,7 +242,9 @@ END_VAR
       </Implementation>
     </Method>
     <LineIds Name="Master_Axis">
-      <LineId Id="854" Count="91" />
+      <LineId Id="854" Count="61" />
+      <LineId Id="995" Count="0" />
+      <LineId Id="916" Count="29" />
       <LineId Id="9" Count="0" />
     </LineIds>
     <LineIds Name="Master_Axis.Axis_State.Get">
@@ -256,8 +271,13 @@ END_VAR
     </LineIds>
     <LineIds Name="Master_Axis.MoveAbsolute">
       <LineId Id="5" Count="0" />
+      <LineId Id="10" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="11" Count="1" />
     </LineIds>
     <LineIds Name="Master_Axis.MoveRelative">
+      <LineId Id="9" Count="4" />
       <LineId Id="5" Count="0" />
     </LineIds>
     <LineIds Name="Master_Axis.Stop">
