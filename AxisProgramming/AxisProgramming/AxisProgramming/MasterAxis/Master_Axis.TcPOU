@@ -27,6 +27,8 @@ VAR
 	Hault_Execute	: BOOL;
 	HaultTrigger	: R_Trig;
 	
+	Lock_Axis		: BOOL;
+	
 	
 	Home_Execute	: BOOL;
 	HomeTrigger		: R_Trig;
@@ -66,7 +68,7 @@ END_VAR
 	   
 HaultTrigger(CLK := Hault_Execute);   
 Pause(Axis := Linked_Axis,
-	  Execute := HaultTrigger.Q,
+	  Execute := Hault_Execute(*HaultTrigger.Q*),
 	  Deceleration := ,
 	  Jerk := ,
 	  BufferMode := ,
@@ -96,7 +98,7 @@ Reference_Drive(Axis := Linked_Axis,
 MoveAbsoluteTrigger(CLK:= MoveAbsolute_Execute);
 AbsoluteMotion(Axis := Linked_Axis,
 			 Execute := (*MoveAbsoluteTrigger.Q*)MoveAbsolute_Execute,
-			 Position := 1000,
+			 Position := 1500,
 			 Velocity := 20,
 			 Acceleration := 5,
 			 Deceleration := 5,
@@ -127,7 +129,19 @@ RelativeMotion(Axis := Linked_Axis,
 			 Error => Status.MoveRelative.Error,
 			 ErrorID => Status.MoveRelative.ErrorID);			 
 
-
+EmergencyStop(Axis := Linked_Axis,
+			  Execute := Lock_Axis,
+			  Deceleration := ,
+			  Jerk := ,
+			  Options := ,
+			  Done => Status.Stop.Done,
+			  Busy => Status.Stop.Busy,
+			  Active => Status.Stop.Active,
+			  CommandAborted => Status.Stop.CommandAborted,
+			  Error => Status.Stop.Error,
+			  ErrorID => Status.Stop.ErrorID);
+			  
+			  
 
 
 
@@ -182,12 +196,16 @@ END_IF]]></ST>
       </Implementation>
     </Method>
     <Method Name="Hault" Id="{bd6648fb-657d-4fdd-8fd7-45d948503f9c}">
-      <Declaration><![CDATA[METHOD Hault
+      <Declaration><![CDATA[METHOD Hault	: BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[Hault_Execute := TRUE;
+
+IF Status.Hault.Done THEN
+	Hault := TRUE;
+END_IF]]></ST>
       </Implementation>
     </Method>
     <Method Name="Home" Id="{4ab2e657-9053-4beb-a8ce-2a2b81376182}">
@@ -233,18 +251,24 @@ END_IF]]></ST>
       </Implementation>
     </Method>
     <Method Name="Stop" Id="{f38da706-b646-4e55-8636-403202df1783}">
-      <Declaration><![CDATA[METHOD Stop
+      <Declaration><![CDATA[METHOD Stop : BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[Lock_Axis := TRUE;
+
+IF Status.Stop.Done THEN
+	Stop := TRUE;
+END_IF]]></ST>
       </Implementation>
     </Method>
     <LineIds Name="Master_Axis">
       <LineId Id="854" Count="61" />
       <LineId Id="995" Count="0" />
-      <LineId Id="916" Count="29" />
+      <LineId Id="916" Count="13" />
+      <LineId Id="1044" Count="11" />
+      <LineId Id="930" Count="15" />
       <LineId Id="9" Count="0" />
     </LineIds>
     <LineIds Name="Master_Axis.Axis_State.Get">
@@ -264,6 +288,9 @@ END_VAR
     </LineIds>
     <LineIds Name="Master_Axis.Hault">
       <LineId Id="5" Count="0" />
+      <LineId Id="10" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="11" Count="1" />
     </LineIds>
     <LineIds Name="Master_Axis.Home">
       <LineId Id="25" Count="4" />
@@ -282,6 +309,9 @@ END_VAR
     </LineIds>
     <LineIds Name="Master_Axis.Stop">
       <LineId Id="5" Count="0" />
+      <LineId Id="10" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="11" Count="1" />
     </LineIds>
   </POU>
 </TcPlcObject>

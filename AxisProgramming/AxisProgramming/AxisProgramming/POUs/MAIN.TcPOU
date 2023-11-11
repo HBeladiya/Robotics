@@ -19,6 +19,11 @@ VAR
 	MoveRelativeDone : BOOL;
 	StartMoveRelative : BOOL;
 	
+	//Pause the axis while it is moving
+	Pause_the_Axis	: BOOL;
+	Pause_is_Done	: BOOL;
+	
+	
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -61,6 +66,25 @@ IF StartMoveRelative THEN
 	END_IF
 END_IF
 
+// Pause the axis while moving
+
+IF Pause_the_Axis THEN
+	AXIS_X.Hault();
+	
+	IF AXIS_X.Hault() THEN
+		Pause_is_Done := TRUE;
+	END_IF
+END_IF
+
+
+
+
+
+
+
+
+
+
 ]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
@@ -89,6 +113,15 @@ END_IF
       <LineId Id="92" Count="6" />
       <LineId Id="91" Count="0" />
       <LineId Id="79" Count="0" />
+      <LineId Id="123" Count="0" />
+      <LineId Id="126" Count="0" />
+      <LineId Id="124" Count="0" />
+      <LineId Id="127" Count="0" />
+      <LineId Id="129" Count="3" />
+      <LineId Id="128" Count="0" />
+      <LineId Id="134" Count="7" />
+      <LineId Id="133" Count="0" />
+      <LineId Id="125" Count="0" />
       <LineId Id="22" Count="0" />
     </LineIds>
   </POU>

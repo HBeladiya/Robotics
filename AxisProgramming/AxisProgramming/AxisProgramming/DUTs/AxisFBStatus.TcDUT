@@ -8,6 +8,7 @@ STRUCT
 	Home			: MC_Halt_Status;
 	MoveAbsolute	: MC_Halt_Status;
 	MoveRelative	: MC_Halt_Status;
+	Stop			: MC_Halt_Status;
 END_STRUCT
 END_TYPE
 ]]></Declaration>
