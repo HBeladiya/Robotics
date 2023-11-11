@@ -58,7 +58,25 @@ VAR
 
 END_VAR
 VAR CONSTANT
+	//Machine States 
+	Machine_in_Automatic		:	INT := 1;
+	Machine_in_Hand				:	INT	:= 2;
+	Machine_in_Error			:	INT := 3;
+	Machine_in_Undefined_State	:	INT := 4;
 
+	//Axis States
+	Manual_Move_Absolute	:	INT := 1;
+	Manual_Move_Relative	:	INT := 2;
+	Manual_Jog_Forward		:	INT := 3;
+	Manual_Jog_Backward		:	INT := 4;
+	Manual_Enable			:	INT := 5;
+	Manual_Stop				: 	INT := 6;
+	Manual_Lock				:	INT := 7;
+	Manual_Home				:	INT := 8;
+	Manual_Reset			:	INT := 9;
+	
+	
+	
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -165,6 +183,44 @@ Axis_Jog(Axis := Linked_Axis,
 		 CommandAborted := ,
 		 Error := ,
 		 ErrorID := );		  
+		 
+		 
+CASE Machine_State OF
+	
+	Machine_in_Automatic :
+	
+	
+	Machine_in_Hand:
+		
+			CASE Manual_State OF
+			
+				Manual_Enable:
+	
+				Manual_Move_Absolute:
+	
+				Manual_Move_Relative:
+	
+				Manual_Jog_Forward:
+	
+				Manual_Jog_Backward:
+	
+				Manual_Stop:
+	
+				Manual_Lock:
+	
+				Manual_Home:
+	
+				Manual_Reset:	
+			
+			END_CASE
+		
+	Machine_in_Error:
+	
+	
+	Machine_in_Undefined_State:
+	
+	
+END_CASE
 
 
 
@@ -293,6 +349,36 @@ END_IF]]></ST>
       <LineId Id="1044" Count="11" />
       <LineId Id="1064" Count="1" />
       <LineId Id="1067" Count="11" />
+      <LineId Id="1085" Count="2" />
+      <LineId Id="1106" Count="0" />
+      <LineId Id="1095" Count="0" />
+      <LineId Id="1107" Count="0" />
+      <LineId Id="1097" Count="2" />
+      <LineId Id="1108" Count="2" />
+      <LineId Id="1126" Count="0" />
+      <LineId Id="1125" Count="0" />
+      <LineId Id="1128" Count="0" />
+      <LineId Id="1127" Count="0" />
+      <LineId Id="1130" Count="0" />
+      <LineId Id="1129" Count="0" />
+      <LineId Id="1132" Count="0" />
+      <LineId Id="1131" Count="0" />
+      <LineId Id="1134" Count="0" />
+      <LineId Id="1133" Count="0" />
+      <LineId Id="1136" Count="0" />
+      <LineId Id="1135" Count="0" />
+      <LineId Id="1138" Count="0" />
+      <LineId Id="1137" Count="0" />
+      <LineId Id="1140" Count="0" />
+      <LineId Id="1139" Count="0" />
+      <LineId Id="1103" Count="0" />
+      <LineId Id="1142" Count="1" />
+      <LineId Id="1100" Count="1" />
+      <LineId Id="1146" Count="0" />
+      <LineId Id="1144" Count="0" />
+      <LineId Id="1147" Count="0" />
+      <LineId Id="1145" Count="0" />
+      <LineId Id="1096" Count="0" />
       <LineId Id="930" Count="15" />
       <LineId Id="9" Count="0" />
     </LineIds>
