@@ -49,7 +49,9 @@ VAR
 	Status 			: AxisFBStatus;
 	
 	// State Machine Variable for axis
-	State			:	INT;
+	Machine_State			:	INT;
+	Manual_State			:	INT;
+	
 	
 	Jog_Positive	: BOOL;
 	Jog_Negative	: BOOL;
