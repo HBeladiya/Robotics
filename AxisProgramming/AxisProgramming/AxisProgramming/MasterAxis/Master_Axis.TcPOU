@@ -16,6 +16,8 @@ VAR
 	AbsoluteMotion		: MC_MOVEABSOLUTE;
 	RelativeMotion		: MC_MOVERELATIVE;
 	EmergencyStop		: MC_STOP;
+	Axis_Jog			: MC_Jog;
+	
 	
 	// Variables to operate functions of the axis
 	PowerUp			: BOOL;
@@ -28,6 +30,7 @@ VAR
 	HaultTrigger	: R_Trig;
 	
 	Lock_Axis		: BOOL;
+	
 	
 	
 	Home_Execute	: BOOL;
@@ -47,6 +50,10 @@ VAR
 	
 	// State Machine Variable for axis
 	State			:	INT;
+	
+	Jog_Positive	: BOOL;
+	Jog_Negative	: BOOL;
+
 END_VAR
 VAR CONSTANT
 
@@ -141,7 +148,21 @@ EmergencyStop(Axis := Linked_Axis,
 			  Error => Status.Stop.Error,
 			  ErrorID => Status.Stop.ErrorID);
 			  
-			  
+Axis_Jog(Axis := Linked_Axis,
+		 JogForward := Jog_Positive,
+		 JogBackwards := Jog_Negative,
+		 Mode := ,
+		 Position := MC_JOGMODE_CONTINOUS,
+		 Velocity := ,
+		 Acceleration := ,
+		 Deceleration := ,
+		 Jerk := ,
+		 Done := ,
+		 Busy := ,
+		 Active := ,
+		 CommandAborted := ,
+		 Error := ,
+		 ErrorID := );		  
 
 
 
@@ -268,6 +289,8 @@ END_IF]]></ST>
       <LineId Id="995" Count="0" />
       <LineId Id="916" Count="13" />
       <LineId Id="1044" Count="11" />
+      <LineId Id="1064" Count="1" />
+      <LineId Id="1067" Count="11" />
       <LineId Id="930" Count="15" />
       <LineId Id="9" Count="0" />
     </LineIds>
